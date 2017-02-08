@@ -16,6 +16,9 @@
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/media-queries.css">
 
+        <link type="text/css" rel="stylesheet" media="screen" href="https://cdn.conversejs.org/2.0.1/css/converse.min.css" />
+        <link type="text/css" rel="stylesheet" media="screen" href="https://cdn.conversejs.org/2.0.1/css/mobile.min.css" />
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -35,20 +38,6 @@
                 <div class="col-sm-12 text">
                   <img src="assets/img/logo.png">
                 </div>
-              </div>
-              <div class="row downloads">
-                <a href="#">
-                  <div class="col-sm-3 col-sm-offset-2 download-button">
-                    <i class="fa fa-android fa-5x"></i>
-                    <p>DOWNLOAD FOR ANDROID</p>
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="col-sm-3 col-sm-offset-2 download-button">
-                    <i class="fa fa-apple fa-5x"></i>
-                    <p>DOWNLOAD FOR IOS</p>
-                  </div>
-                </a>
               </div>
             </div>
           </div>
@@ -82,9 +71,31 @@
         </footer>
 
         <!-- Javascript -->
+        <script src="https://cdn.conversejs.org/2.0.1/dist/converse-mobile.min.js"></script>
         <script src="assets/js/jquery-1.10.2.min.js"></script>
         <script src="assets/js/jquery.backstretch.min.js"></script>
         <script src="assets/js/retina-1.1.0.min.js"></script>
         <script src="assets/js/scripts.js"></script>
+        <script>
+         require(['converse'], function (converse) {
+           converse.initialize({
+             websocket_url: 'ws://xmpp.lambdadays.org:5280/ws-xmpp/',
+             keepalive: true,
+             allow_bookmarks: false,
+             allow_registration: false,
+             auto_join_on_invite: true,
+             auto_join_rooms: ['photo_room@muc.xmpp.lambdadays.org', 'music_room@muc.xmpp.lambdadays.org'],
+             domain_placeholder: 'xmpp.lambdadays.org',
+             locked_domain: 'xmpp.lambdadays.org',
+             default_domain: 'xmpp.lambdadays.org',
+             message_carbons: true,
+             play_sounds: false,
+             muc_nickname_from_jid: true,
+             show_desktop_notifications: false,
+             roster_groups: true,
+             show_controlbox_by_default: false
+           });
+         });
+        </script>
     </body>
 </html>
